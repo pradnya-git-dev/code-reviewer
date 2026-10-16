@@ -50,18 +50,18 @@ def validate(findings, visible):
 	# "visible" maps each file in the diff to the line numbers the diff shows
 	issues = []
 	for finding in findings:
-		file, line = finding["file"], finding["line"]
+		file, line_number = finding["file"], finding["line_number"]
 		if file not in visible:
 			issues.append(f"File {file} is not in this diff.")
-		elif line not in visible[file]:
-			issues.append(f"File {file}, line {line} is not in this diff.")
+		elif line_number not in visible[file]:
+			issues.append(f"File {file}, line {line_number} is not in this diff.")
 	return issues
 
 
 def keep_trustworthy(findings, visible):
 	keep = []
 	for finding in findings:
-		in_diff = finding["file"] in visible and finding["line"] in visible[finding["file"]]
+		in_diff = finding["file"] in visible and finding["line_number"] in visible[finding["file"]]
 		sure_enough = finding["confidence"] >= CONFIDENCE_FLOOR
 		if in_diff and (sure_enough or finding["severity"] == "CRITICAL"):
 			keep.append(finding)
@@ -80,6 +80,6 @@ def review_with_retry(diff_text):
 
 if __name__ == "__main__":
 	for finding in review_with_retry(open(sys.argv[1]).read()):
-		print(f"[{finding['severity']}] {finding['file']}:{finding['line']} confidence:{finding['confidence']:.2f}")
+		print(f"[{finding['severity']}] {finding['file']}:{finding['line_number']} confidence:{finding['confidence']:.2f}")
 		print(f"    {finding['issue']}")
 		print(f"    fix: {finding['suggestion']}")

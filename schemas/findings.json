@@ -14,7 +14,7 @@
             "type": "string",
             "description": "Path as shown in the diff, without the a/ or b/ prefix."
           },
-          "line": {
+          "line_number": {
             "type": "integer",
             "description": "Line number in the new version of the file."
           },

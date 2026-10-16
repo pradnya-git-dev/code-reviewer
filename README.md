@@ -2,7 +2,7 @@
 
 An AI-powered code reviewer that analyzes git diffs and provides detailed feedback.
 
-> **Note:** This project is a work in progress.
+> **Note:** I am working on this project by using the following repo as a reference: https://github.com/keshawillz/oreilly-claude-pr-review-helper
 
 ## Prerequisites
 
@@ -57,6 +57,7 @@ uv run src/review.py changes.diff
 
 | Tag | Changes |
 |-----|---------|
+| [v0.5.0](https://github.com/pradnya-git-dev/code-reviewer/releases/tag/v0.5.0) | Fake Claude setup for testing without incurreing live API usage charges |
 | [v0.4.0](https://github.com/pradnya-git-dev/code-reviewer/releases/tag/v0.4.0) | Improve output quality: Confidence score [0.0, 1.0] for each finding, parse input diff programmatically and validate the AI findings to filter out invalid/hallucinated files/line numbers |
 | [v0.3.0](https://github.com/pradnya-git-dev/code-reviewer/releases/tag/v0.3.0) | Enhance the system prompt for the code reviewer: `prompts/system.md` |
 | [v0.2.0](https://github.com/pradnya-git-dev/code-reviewer/releases/tag/v0.2.0) | Structured JSON output via `schemas/findings.json`; refactored review logic into `review_diff()`; added `src/helpers.py` with `ROOT` and `first_text` utilities |
